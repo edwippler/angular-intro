@@ -6,7 +6,7 @@
   <script type="text/javascript" src="vendors/angular.min.js"></script>
   <script type="text/javascript" src="scripts/client.js"></script>
   <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="styles/basicstyle.css">  
+  <link rel="stylesheet" type="text/css" href="styles/basicstyle.css">
 </head>
 <body>
   <main ng-app="PhirePhiterApp" ng-controller="PhirePhiterController as phirePhiter">
@@ -31,15 +31,16 @@
           <label for="shoutout">Shoutout</label>
           <input type="text" name="shoutout" class="form-control" ng-model="phirePhiter.newPerson.shoutout" placeholder="Shout Out"/>
         </div>
-        <button class="col-md-2" type="submit" ng-click="phirePhiter.createPerson()">Submit</button>
+        <button class="col-md-2" type="submit" ng-click="phirePhiter.createPerson()"> &#10149; Submit</button>
       </form>
     </section>
     <section class="container">
+      <input type="text" name="search" placeholder="&#128269;  Search" ng-model="phirePhiter.query">
       <h3>Class List</h3>
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="person in phirePhiter.people"> <!-- What needs to be repeated? -->
+        <li class="list-group-item" ng-repeat="person in phirePhiter.people | filter:phirePhiter.query"> <!-- What needs to be repeated? -->
           <!-- TODO: Create a list item for everyone in the class -->
-          <a ng-href="https://github.com/{{person.git_username}}" target="_blank">{{person.firstName + person.lastName}} - "{{person.shoutout}}"</a><!-- include the other parameters for the person -->
+          <a ng-href="https://github.com/{{person.git_username}}" target="_blank">{{person.firstName + ' ' + person.lastName}} - "{{person.shoutout}}"</a><!-- include the other parameters for the person -->
         </li>
       </ul>
     </section>
